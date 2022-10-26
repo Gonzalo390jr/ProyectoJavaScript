@@ -1,0 +1,18 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 98vw;
+    grid-template-rows: 20vh, 80vh;
+    grid-template-areas:
+    "nav
+    main";
+}
+
+.nav{
+    grid-area: nav;
+}
+
+.main{
+    grid-area: main;
+    height: 100vh;
+    background-color: rgb(186, 236, 205);
+}

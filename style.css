@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .grid-container{
     display: grid;
     grid-template-columns: 98vw;
@@ -15,4 +20,19 @@
     grid-area: main;
     height: 100vh;
     background-color: rgb(186, 236, 205);
+}
+
+button{
+    margin: 3px;
+    padding: 3px;
+}
+
+input{
+    width: 50vw;
+    margin: 10px;
+    padding: 10px;
+}
+
+#contResultado{
+    background-color: rgb(139, 170, 255);
 }

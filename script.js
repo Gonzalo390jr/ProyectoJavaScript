@@ -47,7 +47,7 @@ function deBinarioADecimal(binario) {
   }
   return ret;
 }
-
+/*
 // esto estaria vinculado a un boton del html, no se como hacer eso
 function botonDecimalaBinario() {
   let numero = prompt("ingrese el numero a transformar");
@@ -66,130 +66,140 @@ function botonBinarioaDecimal() {
   console.log(
     "el binario " + numero + " es en decimal: " + deBinarioADecimal(numero)
   );
-}
-
-botonDecimalaBinario();
-botonBinarioaDecimal();
-
-/* Secciones nuevas */
-/* binario a hexa
-0000 = 0  |  0001 = 1  |  0010 = 2  |  0011 = 3  |  0100 = 4  |  0101 = 5  |  0110 = 6  |  0111 = 7
-1000 = 8  |  1001 = 9  |  1010 = A  |  1011 = B  |  1100 = C  |  1101 = D  |  1110 = E  |  1111 = F
-*/
-// function traducirDelBinario(formato, secBinario) {
-//   if (formato == 3) {
-//     secBinario = "0" + secBinario;
-//   }
-//   switch (Number.parseInt(secBinario)) {
-//     case 0000:
-//       return "0";
-//       break;
-//     case 0001:
-//       return "1";
-//       break;
-//     case 0010:
-//       return "2";
-//       break;
-//     case 0011:
-//       return "3";
-//       break;
-//     case 0100:
-//       return "4";
-//       break;
-//     case 0101:
-//       return "5";
-//       break;
-//     case 0110:
-//       return "6";
-//       break;
-//     case 0111:
-//       return "7";
-//       break;
-//     case 1000:
-//       return "8";
-//       break;
-//     case 1001:
-//       return "9";
-//       break;
-//     case 1010:
-//       return "A";
-//       break;
-//     case 1011:
-//       return "B";
-//       break;
-//     case 1100:
-//       return "C";
-//       break;
-//     case 1101:
-//       return "D";
-//       break;
-//     case 1110:
-//       return "E";
-//       break;
-//     case 1111:
-//       return "F";
-//       break;
-//     default:
-//       return "-"
-//       break;
-//   }
-// }
-
-// function pasarAOtroFormato(formato, numero) {
-//   let entrada = numero;
-//   if (!esBinario(numero)) {
-//     entrada = decimalABinario(numero);
-//   }
-//   let aux = "";
-//   let salida = "";
-//   let cont = 0;
-  
-//   while(entrada.length%formato != 0){
-//     entrada = "0" + entrada;
-//   }
-
-//   for (let i = 0; i < entrada.length; i++) {
-//     aux = aux + entrada.charAt(i);
-//     cont++;
-//     if (cont == formato) {
-//       salida = salida + traducirDelBinario(formato, aux);
-//       aux = "";
-//       cont = 0;
-//     }
-//   }
-//   return salida;
-// }
-
-
+}*/
 
 class TipoNumero {
   constructor(tipo, numero) {
     this.tipo = tipo;
     this.num = numero;
   }
-  mostrar(){
-    alert(this.tipo + ": " + this.num);
-    console.log(this.tipo + ": " + this.num);
+}
+
+// class UnPasaje {
+//   constructor(numeros) {
+//     this.numeros = numeros;
+//   }
+// }
+
+// function pasar2Num(numero, decimal) {
+//   const numeros = [];
+//   if (decimal) {
+//     numeros.push(new TipoNumero("Decimal", numero));
+//     numeros.push(new TipoNumero("Binario", decimalABinario(numero)));
+//   } else {
+//     numeros.push(new TipoNumero("Decimal", deBinarioADecimal(numero)));
+//     numeros.push(new TipoNumero("Binario", numero));
+//   }
+//   return new UnPasaje(numeros);
+// }
+
+class VariosPasajes {
+  constructor(numeros) {
+    this.numeros = numeros;
   }
 }
 
-function mostrarNumeros(numeros) {
+
+function pasarVariosNum(numero) {
+  const numeros = [];
+  numeros.push(new TipoNumero("Decimal", numero));
+  numeros.push(new TipoNumero("Binario", decimalABinario(numero)));
+  numeros.push(new TipoNumero("Octal", Number.parseInt(numero).toString(8)));
+  numeros.push(
+    new TipoNumero("Hexadecimal", Number.parseInt(numero).toString(16))
+  );
+  return new VariosPasajes(numeros);
+}
+
+/*function mostrarNumeros(numeros) {
   for (let i = 0; i < numeros.length; i++) {
     numeros[i].mostrar();
   }
-}
+}*/
 
-function botonPasarDecimalAOtrosFormato() {
+/*function botonPasarDecimalAOtrosFormato() {
   let numero = prompt("ingrese el numero a transformar");
   const numeros = [];
   numeros.push(new TipoNumero("Decimal", numero));
   numeros.push(new TipoNumero("Binario", decimalABinario(numero)));
-  // numeros.push(new TipoNumero("Octal", pasarAOtroFormato(3, numero)));
-  // numeros.push(new TipoNumero("Hexadecimal", pasarAOtroFormato(4, numero)));
-  numeros.push(new TipoNumero("Octal", Number.parseInt(numero).toString(8)))
-  numeros.push(new TipoNumero("Hexadecimal", Number.parseInt(numero).toString(16)))
+  numeros.push(new TipoNumero("Octal", Number.parseInt(numero).toString(8)));
+  numeros.push(
+    new TipoNumero("Hexadecimal", Number.parseInt(numero).toString(16))
+  );
 
   mostrarNumeros(numeros);
+}*/
+
+// let binDec = document.getElementById("btnBiDec");
+
+// let decBin = document.getElementById("btnDecBi");
+
+let trad = document.getElementById("btnTraducir");
+
+let historial = document.getElementById("btnHistorial");
+
+let datoUsuario = document.getElementById("contDatos");
+
+let mostrarResultado = document.getElementById("contResultado");
+
+// binDec.addEventListener("click", botonDecimalABinario());
+// decBin.addEventListener("click", botonBinarioADecimal());
+
+let CantOperaciones = 0;
+
+function mostrarEnHTML(lista){
+  return `<p>${lista[0].tipo}: ${lista[0].num}</p><p>${lista[1].tipo}: ${lista[1].num}</p><p>${lista[2].tipo}: ${lista[2].num}</p><p>${lista[3].tipo}: ${lista[3].num}</p>`
 }
 
-botonPasarDecimalAOtrosFormato();
+trad.onclick = () => {
+  let guardar = `op${CantOperaciones++}`
+
+  let numero = datoUsuario.value 
+  let traduccion = pasarVariosNum(numero)
+  let lista = traduccion.numeros;
+
+  mostrarResultado.innerHTML = "<h3>RESULTADO</h3>" + mostrarEnHTML(lista);
+
+  sessionStorage.setItem(guardar, JSON.stringify(lista))
+}
+
+historial.onclick = () => {
+  let mostrarTodo ="<h3>HISTORIAL</h3>";
+
+  for(let i=0; i<sessionStorage.length; i++){
+    let clave = sessionStorage.key(i);
+    let info = JSON.parse(sessionStorage.getItem(clave));
+    mostrarTodo = mostrarTodo + "<h4>Dato " + i + "</h4>" + mostrarEnHTML(info);
+  }
+
+  mostrarResultado.innerHTML = mostrarTodo;
+}
+
+// function botonDecimalABinario() {
+//   //let nombreGuardado = `op${CantOperaciones++}`
+
+//   let numero = datoUsuario.value
+//   let pasar = pasar2Num(numero, true);
+//   let resultado = pasar.numeros;
+//   mostrarResultado.innerHTML = `<p>${resultado.tipo}: ${resultado[0].num}</p><p>${resultado[1].tipo}: ${resultado[1].num}</p`;
+
+// }
+
+// function botonBinarioADecimal(){
+
+// }
+
+// function botonPasarDecimalAOtrosFormato(){
+
+//   let numero = datoUsuario.nodeValue
+//   alert(numero)
+
+// }
+
+// function mostrarHistorial(){
+
+// }
+
+
+// trad.addEventListener("Click", botonPasarDecimalAOtrosFormato());
+// historial.addEventListener("Click", mostrarHistorial());

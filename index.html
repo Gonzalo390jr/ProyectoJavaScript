@@ -64,28 +64,19 @@
             <p>Todavia es básico, pero va a mejorar.</p>
           </blockquote>
         </figure>
-      
-        <div  class="text-center">
-          <input id="contDatos" class="mb-3" type="text" placeholder="Ingrese el numero a evaluar" aria-label="default input example">
+
+        <div class="text-center">
+          <input
+            id="contDatos"
+            class="mb-3"
+            type="text"
+            value="0"
+            placeholder="Ingrese el numero a evaluar"
+            aria-label="default input example"
+          />
         </div>
 
         <div class="row justify-content-evenly">
-          <!-- <button
-            id="btnBiDec"
-            type="button"
-            class="btn btn-primary btn-lg col-md-5 col-sm-6"
-            src="#"
-          >
-            Traducir de decimal a binario
-          </button>
-          <button
-            id="btnDecBi"
-            type="button"
-            class="btn btn-primary btn-lg col-md-5 col-sm-6"
-            src="#"
-          >
-            Traducir de binario a decimal
-          </button> -->
           <button
             id="btnTraducir"
             type="button"
@@ -104,10 +95,9 @@
           </button>
         </div>
 
-
         <div id="contResultado" class="text-center">
+          <ul></ul>
         </div>
-
       </main>
 
       <script
@@ -115,6 +105,8 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"
       ></script>
+
+
       <script src="./script.js"></script>
     </div>
   </body>

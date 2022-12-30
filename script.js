@@ -79,12 +79,36 @@ let historial = document.getElementById("btnHistorial");
 let datoUsuario = document.getElementById("contDatos");
 
 let mostrarResultado = document.getElementById("contResultado");
+
+let foto = document.getElementById("foto")
+
 let CantOperaciones = 0;
 
 
 
 function mostrarEnHTML(lista) {
-  return `<p>${lista[0].tipo}: ${lista[0].num}</p><p>${lista[1].tipo}: ${lista[1].num}</p><p>${lista[2].tipo}: ${lista[2].num}</p><p>${lista[3].tipo}: ${lista[3].num}</p>`;
+  let ret;
+  for (const it of lista){
+    ret = ret + `<p>${it.tipo}: ${it.num}</p>`; 
+  }
+  return ret;
+}
+
+function aniadirFoto(data){
+  console.log(data)
+  foto.innerHTML = `<h2>EXTRA</h2><h3>El pokemon del numero ingresado es:</h3><h4>${data.name}</h4>`
+  foto.insertAdjacentHTML("beforeend",`<img src="${data.sprites.front_default}" alt="foto-${data.name}">`)
+}
+
+function mostrarFoto(num){
+  if(num>0 && num<906){
+    let url = 'https://pokeapi.co/api/v2/pokemon/'+num+'/'
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => aniadirFoto(data))
+  }else{
+    foto.innerHTML = "<h2>NO HAY POKE</h2>"
+  }
 }
 
 trad.onclick = () => {
@@ -96,6 +120,8 @@ trad.onclick = () => {
 
   
   mostrarResultado.innerHTML = "<h3>RESULTADO</h3>" + mostrarEnHTML(lista);
+
+  mostrarFoto(numero);
 
   sessionStorage.setItem(guardar, JSON.stringify(lista));
 };
